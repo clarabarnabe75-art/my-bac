@@ -1,0 +1,14 @@
+{
+  "name": "My Bac — Révise avec le sourire",
+  "short_name": "My Bac",
+  "description": "Tes cours, fiches, quiz et atlas pour préparer le bac.",
+  "lang": "fr-FR",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f8f6ff",
+  "theme_color": "#7952e8",
+  "icons": [
+    {"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any"}
+  ]
+}

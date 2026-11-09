@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#7c4dff">
+  <meta name="description" content="My Bac — tes cours, fiches, quiz et atlas pour préparer le bac.">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <title>My Bac — Révise avec le sourire</title>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" data-page="home" aria-label="My Bac, accueil">
+        <span class="brand-star">★</span><span>My <b>Bac</b></span>
+      </a>
+      <div class="top-actions">
+        <span class="streak" title="Tes points"><span>⭐</span> <b id="top-points">0</b></span>
+        <button class="avatar" id="mascot-button" aria-label="Petit message de la mascotte">✦</button>
+      </div>
+    </header>
+
+    <main id="app-main">
+      <section class="page active" id="page-home">
+        <div class="hero">
+          <div class="hero-copy">
+            <span class="eyebrow">TON ESPACE DE RÉVISION</span>
+            <h1>Prête à faire<br>briller tes idées ?</h1>
+            <p>Un petit pas après l'autre. Tu avances à ton rythme !</p>
+            <button class="primary-btn" data-page="subjects">C'est parti <span>→</span></button>
+          </div>
+          <div class="mascot" aria-label="Mascotte étoile jaune">★<span class="mascot-bag">▰</span><i>••</i></div>
+          <span class="sparkle s1">✦</span><span class="sparkle s2">✧</span><span class="sparkle s3">✦</span>
+        </div>
+
+        <div class="section-heading">
+          <div><span class="eyebrow">TON PROGRAMME</span><h2>Mes matières</h2></div>
+          <button class="text-btn" data-page="subjects">Tout voir →</button>
+        </div>
+        <div class="subject-grid">
+          <button class="subject-card hggsp" data-subject="hggsp"><span class="subject-icon">🌍</span><b>HGGSP</b><small>Histoire-géo, géopolitique</small><span class="card-arrow">↗</span></button>
+          <button class="subject-card ses" data-subject="ses"><span class="subject-icon">📊</span><b>SES</b><small>Sciences économiques et sociales</small><span class="card-arrow">↗</span></button>
+          <button class="subject-card philo" data-subject="philo"><span class="subject-icon">💭</span><b>Philosophie</b><small>Notions, auteurs, dissertations</small><span class="card-arrow">↗</span></button>
+        </div>
+
+        <div class="section-heading"><div><span class="eyebrow">ON GARDE LE RYTHME</span><h2>Ma progression</h2></div><button class="text-btn" data-page="progress">Voir →</button></div>
+        <div class="progress-panel">
+          <div class="progress-stat"><span class="stat-icon">⭐</span><div><b id="home-points">0</b><small>points gagnés</small></div></div>
+          <div class="progress-stat"><span class="stat-icon">📚</span><div><b id="home-quizzes">0</b><small>quiz terminés</small></div></div>
+          <div class="progress-stat"><span class="stat-icon">🔁</span><div><b id="home-review">0</b><small>questions à revoir</small></div></div>
+        </div>
+        <div class="quick-links">
+          <button class="quick-card" data-page="atlas"><span>🗺️</span><div><b>Atlas HGGSP</b><small>Comprendre les évolutions du monde</small></div><strong>→</strong></button>
+          <button class="quick-card" data-page="quiz"><span>🎯</span><div><b>Petit quiz du jour</b><small>Teste tes connaissances</small></div><strong>→</strong></button>
+        </div>
+        <div class="official-sources"><span class="eyebrow">POUR VÉRIFIER ET APPROFONDIR</span><h2>Programmes officiels</h2><p>Les cours de My Bac sont des synthèses de révision. Tu peux consulter ici les programmes et ressources de référence.</p><a href="https://eduscol.education.gouv.fr/5802/programmes-et-ressources-en-histoire-geographie-geopolitique-et-sciences-politiques-voie-g" target="_blank" rel="noopener">HGGSP — Éduscol ↗</a><a href="https://eduscol.education.gouv.fr/5838/programmes-et-ressources-en-sciences-economiques-et-sociales-voie-gt" target="_blank" rel="noopener">SES — Éduscol ↗</a><a href="https://eduscol.education.gouv.fr/5826/programmes-et-ressources-en-philosophie-voie-gt" target="_blank" rel="noopener">Philosophie — Éduscol ↗</a></div>
+      </section>
+
+      <section class="page" id="page-subjects">
+        <div class="page-intro"><span class="eyebrow">ORGANISATION</span><h1>Mes matières</h1><p>Choisis une matière pour retrouver ses chapitres.</p></div>
+        <div class="subject-grid">
+          <button class="subject-card hggsp" data-subject="hggsp"><span class="subject-icon">🌍</span><b>HGGSP</b><small>Histoire-géo, géopolitique</small><span class="card-arrow">↗</span></button>
+          <button class="subject-card ses" data-subject="ses"><span class="subject-icon">📊</span><b>SES</b><small>Sciences économiques et sociales</small><span class="card-arrow">↗</span></button>
+          <button class="subject-card philo" data-subject="philo"><span class="subject-icon">💭</span><b>Philosophie</b><small>Notions et auteurs</small><span class="card-arrow">↗</span></button>
+        </div>
+      </section>
+
+      <section class="page" id="page-chapters">
+        <button class="back-btn" data-page="subjects">← Mes matières</button>
+        <div class="page-intro"><span class="eyebrow" id="subject-eyebrow">MATIÈRE</span><h1 id="subject-title">HGGSP</h1><p id="subject-description"></p></div>
+        <div id="chapter-list" class="chapter-list"></div>
+      </section>
+
+      <section class="page" id="page-chapter">
+        <button class="back-btn" id="back-chapters">← Retour aux chapitres</button>
+        <div class="page-intro"><span class="eyebrow" id="chapter-subject">HGGSP</span><h1 id="chapter-title">Chapitre</h1><p id="chapter-subtitle"></p></div>
+        <div class="tab-strip" role="tablist">
+          <button class="tab active" data-tab="course">Cours</button>
+          <button class="tab" data-tab="sheet">Fiche</button>
+          <button class="tab" data-tab="quiz">Quiz</button>
+        </div>
+        <div id="chapter-content" class="content-card"></div>
+      </section>
+
+      <section class="page" id="page-quiz">
+        <div class="page-intro"><span class="eyebrow">ENTRAÎNEMENT</span><h1>Mes quiz</h1><p>Quelques questions pour vérifier ce que tu as retenu.</p></div>
+        <div class="feature-card purple-card"><span class="big-emoji">🎯</span><div><b>Quiz de toutes les matières</b><p>Chaque chapitre possède son entraînement avec des corrections expliquées.</p><button class="light-btn" data-page="subjects">Choisir un chapitre →</button></div></div>
+        <div class="notice"><b>Conseil</b><p>Après avoir relu un cours et sa fiche, lance son quiz. Les questions ratées apparaissent dans « À revoir ».</p></div>
+      </section>
+
+      <section class="page" id="page-atlas">
+        <div class="page-intro"><span class="eyebrow">DOSSIER SPÉCIAL HGGSP</span><h1>Atlas du monde 🌍</h1><p>Explore les grands espaces de puissance, les routes maritimes et les repères historiques.</p></div>
+        <div class="atlas-explorer">
+          <div class="atlas-topic-tabs" id="atlas-topic-tabs" aria-label="Choisir un dossier de l'atlas"></div>
+          <div class="atlas-topic-intro"><span class="eyebrow">DOSSIER SÉLECTIONNÉ</span><h2 id="atlas-topic-title">La conquête spatiale</h2><p id="atlas-topic-description">Explore les grandes étapes et les acteurs.</p></div>
+          <h3 class="atlas-section-title">Choisir un calque / une catégorie</h3>
+          <div class="atlas-layer-list" id="atlas-layer-list"></div>
+          <div class="atlas-map-panel">
+            <div class="atlas-map-visual" aria-label="Panneau de repères thématiques interactifs">
+              <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="atlas-planet">🌍</div>
+              <span class="atlas-satellite satellite-one">🛰️</span><span class="atlas-satellite satellite-two">🚢</span><span class="atlas-satellite satellite-three">📡</span>
+              <span class="atlas-map-caption">REPÈRES À EXPLORER</span>
+            </div>
+            <div class="atlas-map-note">Panneau de navigation pédagogique : les fiches ci-dessous présentent les repères du thème. Ce visuel n'est pas une carte géographique à l'échelle.</div>
+          </div>
+          <div class="atlas-facts-panel">
+            <h3 id="atlas-layer-heading">Repères chronologiques</h3>
+            <div id="atlas-facts" class="atlas-facts"></div>
+            <div id="atlas-fact-detail" class="atlas-fact-detail">Sélectionne un repère pour afficher son détail.</div>
+          </div>
+        </div>
+        <div class="atlas-history-panel">
+          <div class="section-heading"><div><span class="eyebrow">REPÈRES HISTORIQUES</span><h2>Comparer les périodes</h2></div></div>
+          <div class="atlas-controls">
+            <label for="atlas-period">Choisir une période</label>
+            <select id="atlas-period">
+              <option value="1914">1914 — Avant la Première Guerre mondiale</option>
+              <option value="1919">1919 — Après les traités de paix</option>
+              <option value="1945">1945 — Après la Seconde Guerre mondiale</option>
+              <option value="1991">1991 — Fin de la guerre froide</option>
+              <option value="today">Aujourd'hui — Repères contemporains</option>
+            </select>
+          </div>
+          <div class="map-card">
+            <div class="map-heading"><span id="map-year">1914</span><span class="map-tag">REPÈRES HISTORIQUES</span></div>
+            <div class="schematic-map" id="schematic-map" aria-label="Schéma chronologique simplifié de l'Europe">
+              <div class="map-land land-a">EUROPE<br>OCCIDENTALE</div><div class="map-land land-b">EUROPE<br>CENTRALE</div><div class="map-land land-c">EUROPE<br>ORIENTALE</div>
+              <span class="map-dot dot-one"></span><span class="map-dot dot-two"></span><span class="map-dot dot-three"></span>
+              <span class="map-water">SCHÉMA PÉDAGOGIQUE — PAS À L'ÉCHELLE</span>
+            </div>
+            <div class="map-legend"><span><i class="legend-dot one"></i> Ouest</span><span><i class="legend-dot two"></i> Centre</span><span><i class="legend-dot three"></i> Est</span></div>
+            <p class="map-disclaimer">Ce schéma est un support de repérage et ne représente pas des frontières exactes. Les cartes géographiques historiques précises seront ajoutées séparément avec leurs sources et leurs légendes.</p>
+          </div>
+          <div class="atlas-info"><span class="info-icon">📍</span><div><span class="eyebrow">À RETENIR</span><h3 id="atlas-title">L'Europe en 1914</h3><p id="atlas-text"></p></div></div>
+          <div class="timeline" id="atlas-timeline"></div>
+        </div>
+      </section>
+
+      <section class="page" id="page-progress">
+        <div class="page-intro"><span class="eyebrow">TES EFFORTS COMPTENT</span><h1>Ma progression ⭐</h1><p>Pas besoin d'être parfaite : chaque révision compte.</p></div>
+        <div class="progress-panel large">
+          <div class="progress-stat"><span class="stat-icon">⭐</span><div><b id="progress-points">0</b><small>points gagnés</small></div></div>
+          <div class="progress-stat"><span class="stat-icon">📚</span><div><b id="progress-quizzes">0</b><small>quiz terminés</small></div></div>
+          <div class="progress-stat"><span class="stat-icon">🔁</span><div><b id="progress-review">0</b><small>questions à revoir</small></div></div>
+        </div>
+        <h2 class="subheading">Mes questions à revoir</h2>
+        <div id="review-list" class="review-list"><p class="empty-state">Rien à revoir pour le moment. Tu peux commencer par un quiz ! ✨</p></div>
+        <button class="secondary-btn" id="reset-progress">Réinitialiser ma progression</button>
+      </section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="Navigation principale">
+      <button class="nav-item active" data-page="home"><span>⌂</span><small>Accueil</small></button>
+      <button class="nav-item" data-page="subjects"><span>📚</span><small>Cours</small></button>
+      <button class="nav-item" data-page="atlas"><span>🗺️</span><small>Atlas</small></button>
+      <button class="nav-item" data-page="quiz"><span>✦</span><small>Quiz</small></button>
+      <button class="nav-item" data-page="progress"><span>◔</span><small>Suivi</small></button>
+    </nav>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+  <script src="course-library.js"></script>
+  <script src="world-countries.js"></script>
+  <script src="atlas-interactive.js"></script>
+  <script>
+    if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
+      window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js").catch(() => {}));
+    }
+  </script>
+</body>
+</html>
